@@ -11,7 +11,8 @@
     <h2 class="text-grey text-[14px] leading-[129%] mb-[32px]">
       Господа, сложившаяся структура организации способствует повышению качества поставленных обществом задач.
     </h2>
-    <MainSearch class="mb-10" :ingredients="ingredients" @create="addIngredient" />
+    <MainSearch :class="searchMargin" :ingredients="ingredients" @create="addIngredient" />
+    <ingredient-list class="mb-5" :ingredients="ingredients" @remove="removeIngredient" />
     <div>
       <img class="main-img" src="@/assets/MainImg.png" alt="IMG" />
     </div>
@@ -20,18 +21,33 @@
 
 <script>
 import MainSearch from '@/components/MainSearch';
+import IngredientList from '@/components/IngredientList';
 export default {
   name: 'MainView',
-  components: { MainSearch },
+  components: { IngredientList, MainSearch },
   data() {
     return {
-      ingredients: [],
+      ingredients: [
+        { id: 1, ingredient: 'водка' },
+        { id: 2, ingredient: 'джин' },
+      ],
     };
   },
   methods: {
     addIngredient(ingredient) {
       this.ingredients.push(ingredient);
       console.log(this.ingredients);
+    },
+    removeIngredient(ingredient) {
+      this.ingredients = this.ingredients.filter(i => i.id !== ingredient.id);
+    },
+  },
+  computed: {
+    searchMargin() {
+      return {
+        'search-empty': this.ingredients.length === 0,
+        'search-not-empty': this.ingredients.length !== 0,
+      };
     },
   },
 };
@@ -52,9 +68,16 @@ nav {
 
 .main-img {
   height: 250px;
-  max-height: 320px;
   object-fit: fill;
   object-position: center;
-  border-radius: 40px;
+  border-radius: 30px;
+}
+
+.search-empty {
+  margin-bottom: 30px;
+}
+
+.search-not-empty {
+  margin-bottom: 15px;
 }
 </style>

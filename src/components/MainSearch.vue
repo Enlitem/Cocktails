@@ -3,7 +3,7 @@
     <div class="text-field__icon text-field__icon_search text-field">
       <input
         class="input"
-        v-model="ingredient"
+        v-model="ingredient.ingredient"
         type="text"
         placeholder="Поиск по ингредиентам"
         @keyup.enter="addIngredient"
@@ -20,13 +20,18 @@ export default {
   components: { MainButton },
   data() {
     return {
-      ingredient: '',
+      ingredient: {
+        ingredient: '',
+      },
     };
   },
   methods: {
     addIngredient() {
+      this.ingredient.id = Date.now();
       this.$emit('create', this.ingredient);
-      this.ingredient = '';
+      this.ingredient = {
+        ingredient: '',
+      };
     },
   },
 };
