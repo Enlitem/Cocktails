@@ -12,7 +12,7 @@ export default {
   name: 'IngredientLabel',
   props: {
     ingredient: {
-      type: Object,
+      type: String,
       required: true,
     },
   },
