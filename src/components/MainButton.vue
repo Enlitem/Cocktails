@@ -1,7 +1,5 @@
 <template>
-  <div class="btn">
-    <button>{{ text }}</button>
-  </div>
+  <button class="btn">{{ text }}</button>
 </template>
 
 <script>
@@ -18,11 +16,18 @@ export default {
 
 <style scoped>
 .btn {
-  @apply bg-pink py-[10px] flex justify-center;
+  @apply bg-pink h-[35px] flex justify-center items-center text-[12px] md:text-[16px] md:h-[50px];
   font-weight: 500;
-  font-size: 12px;
   line-height: 130%;
   border-radius: 0 7px 7px 0;
   color: #ffffff;
+}
+
+.btn:hover {
+  @apply bg-[#E21B36];
+}
+
+.btn:active {
+  @apply bg-[#C92037];
 }
 </style>
