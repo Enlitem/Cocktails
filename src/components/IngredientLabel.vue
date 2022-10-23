@@ -27,17 +27,16 @@ export default {
 }
 
 .img {
-  @apply w-[6.65px] h-[6.65px];
+  @apply w-[6.65px] h-[6.65px] md:w-[9.33px] md:h-[9.33px];
 }
 
 .label-img {
-  @apply px-[3px] py-[5px];
+  @apply px-[3px] py-[5px] md:px-1 md:py-[6px];
 }
 
 .label-text {
-  @apply py-0.5 px-[6px];
+  @apply py-0.5 px-[6px] text-[10px] md:py-[3px] md:px-3 md:text-[12px];
   font-weight: 400;
-  font-size: 10px;
   line-height: 130%;
   border-right: 1px solid #443e3e;
 }

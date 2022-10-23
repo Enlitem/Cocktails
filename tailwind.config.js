@@ -11,11 +11,16 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Montserrat'],
+      raleway: ['Raleway'],
     },
     colors: {
       pink: '#EB2D47',
       grey: '#443E3E',
       'light-grey': '#999999',
+    },
+    backgroundPosition: {
+      'left-10': '10px 10px',
+      'left-43': '43px 15px',
     },
   },
   plugins: [],

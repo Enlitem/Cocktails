@@ -13,6 +13,6 @@ export default {};
   @apply font-sans;
 }
 .spacing {
-  @apply px-5 mr-auto ml-auto;
+  @apply px-5 mr-auto ml-auto max-w-[1216px];
 }
 </style>
