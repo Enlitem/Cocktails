@@ -20,7 +20,7 @@ module.exports = {
     },
     backgroundPosition: {
       'left-10': '10px 10px',
-      'left-43': '43px 15px',
+      'left-43': '43px 12px',
     },
   },
   plugins: [],
