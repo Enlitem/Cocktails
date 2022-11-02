@@ -8,7 +8,9 @@
             <router-link :class="[currentRouteName === 'main' ? 'link-active' : '']" to="/">Главная</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="">Коктейли</router-link>
+            <router-link :class="[currentRouteName === 'cocktails' ? 'link-active' : '']" to="cocktails"
+              >Коктейли</router-link
+            >
           </li>
           <li class="nav-item">
             <router-link to="">Калькулятор вечеринок</router-link>
