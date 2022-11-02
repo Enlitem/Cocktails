@@ -3,8 +3,8 @@
     <main-cocktail-card
       class="last:mr-auto"
       v-for="drink in drinks"
-      :name="drink.name"
-      :second-name="drink.secondName"
+      :name="drink.strDrink"
+      :second-name="drink.strDrinkAlternate"
       :ingredients="drink.ingredients"
       :key="drink.name"
     />
@@ -16,24 +16,14 @@ import MainCocktailCard from '@/components/MainCocktailCard';
 export default {
   name: 'MainCocktailCardResult',
   components: { MainCocktailCard },
+  props: {
+    drinks: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
-    return {
-      drinks: [
-        {
-          name: 'Лонг Айленд Айс Ти',
-          secondName: 'Long Island Iced Tea',
-          ingredients: ['example', 'example', 'example', 'example', 'example'],
-        },
-        { name: 'Бостонский чай', secondName: 'Boston Tea', ingredients: ['example', 'example', 'example', 'example'] },
-        { name: 'Голубая лагуна', secondName: 'Blue Water', ingredients: ['example', 'example', 'example'] },
-        {
-          name: 'Бостонский чай',
-          secondName: 'Boston Tea',
-          ingredients: ['example', 'example', 'example', 'example', 'example'],
-        },
-        { name: 'Голубая лагуна', secondName: 'Blue Water', ingredients: ['example'] },
-      ],
-    };
+    return {};
   },
 };
 </script>
