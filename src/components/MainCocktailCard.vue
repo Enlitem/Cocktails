@@ -17,7 +17,7 @@
     <div
       class="truncate-text mb-[17px] text-[14px] font-normal leading-[130%] text-grey max-h-[53px] md:mb-[10px] xl:text-[14px]"
     >
-      {{ ingredients }}
+      {{ ingredients.join(', ') }}
     </div>
     <main-cocktail-card-label-list :labels="labels" />
   </div>
@@ -39,7 +39,7 @@ export default {
       required: false,
     },
     ingredients: {
-      type: String,
+      type: Array,
       required: true,
     },
     labels: {
