@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-wrap gap-y-[20px] gap-x-[20px] justify-center md:justify-between md:gap-x-[25px]">
+  <div class="result-container">
     <main-cocktail-card
-      class="last:mr-auto"
+      class=""
       v-for="drink in drinks"
       :name="drink.strDrink"
       :second-name="drink.strDrinkAlternate"
@@ -28,4 +28,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.result-container {
+  @apply max-w-[728px] grid grid-cols-1 justify-items-center gap-y-[20px] gap-x-[20px] smx:grid-cols-2 smx:justify-items-start md:grid-cols-3 xl:max-w-[907px];
+}
+</style>
