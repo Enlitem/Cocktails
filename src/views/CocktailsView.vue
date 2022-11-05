@@ -4,16 +4,17 @@
     <div class="font-medium text-[18px] leading-[130%] mb-2">Найдено {{ this.totalDrinks }} коктейлей</div>
     <div class="mb-[30px]">История</div>
     <ingredient-list class="mb-4" :ingredients="this.ingredients" @remove="removeIngredient" />
-    <main-cocktail-card-result class="mb-[50px]" v-if="!isLoading" :drinks="drinks" />
-    <main-pages
-      class=""
-      :page="this.page"
-      :totalPages="this.totalPages"
-      @changePage="changePage"
-      @nextPage="nextPage"
-      @previousPage="previousPage"
-      @loadMoreDrinks="loadMoreDrinks"
-    />
+    <main-cocktail-card-result class="mb-[50px]" v-if="!isLoading" :drinks="drinks">
+      <main-pages
+        class="smx:col-start-1 smx:col-span-full md:col-start-2 md:col-span-1"
+        :page="this.page"
+        :totalPages="this.totalPages"
+        @changePage="changePage"
+        @nextPage="nextPage"
+        @previousPage="previousPage"
+        @loadMoreDrinks="loadMoreDrinks"
+      />
+    </main-cocktail-card-result>
   </div>
 </template>
 
