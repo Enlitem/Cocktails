@@ -15,7 +15,7 @@
         @add="addIngredient"
       />
     </div>
-    <MainButton class="w-[25%]" text="Поиск" />
+    <MainButton class="w-[25%]" text="Поиск" @click="search" />
   </form>
   <ingredient-list class="mb-[30px]" :ingredients="ingredients" @remove="removeIngredient" />
 </template>
@@ -24,16 +24,25 @@
 import MainButton from '@/components/MainButton';
 import MainSearchResults from '@/components/MainSearchResults';
 import IngredientList from '@/components/IngredientList';
+import router from '@/router';
 export default {
   name: 'MainSearch',
   components: { IngredientList, MainSearchResults, MainButton },
   data() {
     return {
-      ingredients: [
-        { id: 1, ingredient: 'водка' },
-        { id: 2, ingredient: 'джин' },
+      ingredients: [],
+      keywords: [
+        'водка',
+        'джин',
+        'текила',
+        'ром',
+        'трипл-сек',
+        'светлый ром',
+        'темный ром',
+        'апероль',
+        'коньяк',
+        'кампари',
       ],
-      keywords: ['водка', 'джин', 'текила', 'ром', 'трипл-сек', 'светлый ром', 'темный ром', 'апероль'],
       query: '',
     };
   },
@@ -48,6 +57,12 @@ export default {
     },
     removeIngredient(ingredient) {
       this.ingredients = this.ingredients.filter(i => i.id !== ingredient.id);
+    },
+    search() {
+      router.push({
+        name: 'cocktails',
+        query: { ingredients: this.ingredients.map(item => item.ingredient).join(',') },
+      });
     },
   },
   computed: {
@@ -115,7 +130,7 @@ export default {
 }
 
 .text-field-br-not-empty {
-  border-radius: 9px 0 0 0px;
+  border-radius: 9px 0 0 0;
 }
 
 .labels-not-empty {

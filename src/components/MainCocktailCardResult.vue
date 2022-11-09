@@ -1,13 +1,15 @@
 <template>
-  <div class="flex flex-wrap gap-y-[20px] gap-x-[20px] justify-center md:justify-between md:gap-x-[25px]">
+  <div class="result-container">
     <main-cocktail-card
-      class="last:mr-auto"
+      class=""
       v-for="drink in drinks"
-      :name="drink.name"
-      :second-name="drink.secondName"
+      :name="drink.strDrink"
+      :second-name="drink.strDrinkAlternate"
       :ingredients="drink.ingredients"
+      :img="drink.strDrinkThumb"
       :key="drink.name"
     />
+    <slot></slot>
   </div>
 </template>
 
@@ -16,26 +18,20 @@ import MainCocktailCard from '@/components/MainCocktailCard';
 export default {
   name: 'MainCocktailCardResult',
   components: { MainCocktailCard },
+  props: {
+    drinks: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
-    return {
-      drinks: [
-        {
-          name: 'Лонг Айленд Айс Ти',
-          secondName: 'Long Island Iced Tea',
-          ingredients: ['example', 'example', 'example', 'example', 'example'],
-        },
-        { name: 'Бостонский чай', secondName: 'Boston Tea', ingredients: ['example', 'example', 'example', 'example'] },
-        { name: 'Голубая лагуна', secondName: 'Blue Water', ingredients: ['example', 'example', 'example'] },
-        {
-          name: 'Бостонский чай',
-          secondName: 'Boston Tea',
-          ingredients: ['example', 'example', 'example', 'example', 'example'],
-        },
-        { name: 'Голубая лагуна', secondName: 'Blue Water', ingredients: ['example'] },
-      ],
-    };
+    return {};
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.result-container {
+  @apply max-w-[728px] grid grid-cols-1 justify-items-center gap-y-[20px] gap-x-[20px] smx:grid-cols-2 smx:justify-items-center md:grid-cols-3 xl:max-w-[907px];
+}
+</style>

@@ -10,7 +10,7 @@ export default {};
 
 <style>
 * {
-  @apply font-sans;
+  @apply font-sans leading-[130%];
 }
 .spacing {
   @apply px-5 mr-auto ml-auto max-w-[1216px];

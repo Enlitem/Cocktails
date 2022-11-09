@@ -1,6 +1,6 @@
 <template>
-  <div class="max-w-[320px] md:w-[225px] xl:w-[289px]">
-    <img class="rounded-[12px] mb-3 md:mb-[5px]" src="@/assets/cocktail.png" alt="" />
+  <div class="max-w-[320px] smx:w-full md:w-[225px] xl:w-[289px]">
+    <img class="rounded-[12px] mb-3 md:mb-[5px]" :src="img" alt="" @click="$router.push(`/cocktails/${secondName}`)" />
     <div class="flex justify-between">
       <span class="text-[18px] font-normal leading-[130%] md:text-[16px] xl:text-[18px]">{{ name }}</span>
       <button>
@@ -17,7 +17,7 @@
     <div
       class="truncate-text mb-[17px] text-[14px] font-normal leading-[130%] text-grey max-h-[53px] md:mb-[10px] xl:text-[14px]"
     >
-      {{ ingredients }}
+      {{ ingredients.join(', ') }}
     </div>
     <main-cocktail-card-label-list :labels="labels" />
   </div>
@@ -39,11 +39,15 @@ export default {
       required: false,
     },
     ingredients: {
-      type: String,
+      type: Array,
       required: true,
     },
     labels: {
       type: Array,
+      required: false,
+    },
+    img: {
+      type: String,
       required: false,
     },
   },
