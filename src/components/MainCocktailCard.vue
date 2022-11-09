@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-[320px] smx:w-full md:w-[225px] xl:w-[289px]">
-    <img class="rounded-[12px] mb-3 md:mb-[5px]" src="@/assets/cocktail.png" alt="" />
+    <img class="rounded-[12px] mb-3 md:mb-[5px]" :src="img" alt="" @click="$router.push(`/cocktails/${secondName}`)" />
     <div class="flex justify-between">
       <span class="text-[18px] font-normal leading-[130%] md:text-[16px] xl:text-[18px]">{{ name }}</span>
       <button>
@@ -44,6 +44,10 @@ export default {
     },
     labels: {
       type: Array,
+      required: false,
+    },
+    img: {
+      type: String,
       required: false,
     },
   },
