@@ -6,6 +6,7 @@
       :name="drink.strDrink"
       :second-name="drink.strDrinkAlternate"
       :ingredients="drink.ingredients"
+      :img="drink.strDrinkThumb"
       :key="drink.name"
     />
     <slot></slot>
