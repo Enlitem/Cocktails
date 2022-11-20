@@ -2,7 +2,7 @@
   <div class="results-box w-full bg-[#FFFFFF]">
     <ul>
       <li
-        class="mb-2 last:mb-0 select-none truncate hover:bg-[#F5F5F5]"
+        class="mb-2 pl-[32px] last:mb-0 select-none truncate hover:bg-[#F5F5F5]"
         v-for="result in results"
         :key="result"
         @click="$emit('add', result)"
@@ -34,7 +34,7 @@ export default {
   font-weight: 400;
   font-size: 12px;
   line-height: 130%;
-  padding: 10px 0 10px 32px;
+  padding: 10px 0 10px 0;
   top: calc(100% - 1px);
 }
 </style>
