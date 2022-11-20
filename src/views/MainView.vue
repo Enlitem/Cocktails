@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
 .main-img {
-  @apply min-h-[250px] max-h-[320px] w-[100%];
+  @apply min-h-[250px] max-h-[320px] w-[100%] lg:min-h-[320px] xl:max-h-[410px];
   object-fit: cover;
   object-position: center;
   border-radius: 30px;
