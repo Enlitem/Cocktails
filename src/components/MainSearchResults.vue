@@ -27,6 +27,8 @@ export default {
 
 <style scoped>
 .results-box {
+  max-height: 60vh;
+  overflow-y: scroll;
   border-width: 1px;
   border-style: solid;
   border-color: #443e3e;
