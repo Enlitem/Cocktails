@@ -69,7 +69,6 @@ export default {
             _limit: this.limit,
           },
         });
-        console.log(response.data);
         this.drinks = [...this.drinks, ...response.data];
       } catch (e) {
         console.log(e);
@@ -80,7 +79,6 @@ export default {
       for (let i = 0; i < this.ingredients.length; i++) {
         url.searchParams.append('ingredients_like', this.ingredients[i].ingredient);
       }
-      console.log(url);
       return url;
     },
     getIngredientsFromQuery() {

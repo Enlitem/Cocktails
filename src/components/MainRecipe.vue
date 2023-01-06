@@ -122,6 +122,10 @@ export default {
           return require(`@/assets/коктейльнаярюмка.png`);
         case 'Рокс или Олд фэшен':
           return require(`@/assets/рокс.png`);
+        case 'Рокс':
+          return require(`@/assets/рокс.png`);
+        case 'Олд фэшен':
+          return require(`@/assets/рокс.png`);
         case 'Флюте':
           return require(`@/assets/флюте.png`);
         case 'Тумблер или Олд фэшен':
@@ -130,6 +134,10 @@ export default {
           return require(`@/assets/хайбол.png`);
         case 'Коллинз или Хайбол':
           return require(`@/assets/хайбол.png`);
+        case 'Медная кружка':
+          return require(`@/assets/медная кружка.png`);
+        case 'Слинг':
+          return require(`@/assets/слинг.png`);
         default:
           return null;
       }
