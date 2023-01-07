@@ -1,5 +1,8 @@
 <template>
-  <div class="flex flex-wrap gap-x-2.5 gap-y-2 md:gap-x-[15px]" v-if="ingredients.length > 0">
+  <div
+    class="flex flex-wrap gap-x-2.5 gap-y-2 md:gap-x-[15px] lg:border-b lg:border-[#CCCCCC]"
+    v-if="ingredients.length > 0"
+  >
     <ingredient-label
       v-for="ingredient in ingredients"
       :key="ingredient.id"
