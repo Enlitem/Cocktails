@@ -1,20 +1,23 @@
 <template>
   <div class="spacing">
     <app-navbar class="mb-[30px]" />
-    <div class="font-medium text-[18px] leading-[130%] mb-2">Найдено {{ this.totalDrinks }} коктейлей</div>
+    <div class="font-medium text-[18px] mb-2 smx:text-[24px]">Найдено {{ this.totalDrinks }} коктейлей</div>
     <div class="mb-[30px]">История</div>
-    <ingredient-list class="mb-4" :ingredients="this.ingredients" @remove="removeIngredient" />
-    <main-cocktail-card-result class="mb-[50px]" v-if="!isLoading" :drinks="drinks">
-      <main-pages
-        class="smx:col-start-1 smx:col-span-full md:col-start-2 md:col-span-1"
-        :page="this.page"
-        :totalPages="this.totalPages"
-        @changePage="changePage"
-        @nextPage="nextPage"
-        @previousPage="previousPage"
-        @loadMoreDrinks="loadMoreDrinks"
-      />
-    </main-cocktail-card-result>
+    <ingredient-list class="mb-4 lg:pb-4 lg:mb-10" :ingredients="this.ingredients" @remove="removeIngredient" />
+    <div class="lg:grid lg:grid-cols-4 lg:gap-x-[20px] xl:grid-cols-12">
+      <main-filter class="mb-[30px] lg:col-span-1 xl:col-span-3 xl:max-w-[251px]" @check="changeFilters" />
+      <main-cocktail-card-result class="mb-[50px] lg:col-span-3 xl:col-span-9" v-if="!isLoading" :drinks="drinks">
+        <main-pages
+          class="smx:col-start-1 smx:col-span-full md:col-start-2 md:col-span-1"
+          :page="this.page"
+          :totalPages="this.totalPages"
+          @changePage="changePage"
+          @nextPage="nextPage"
+          @previousPage="previousPage"
+          @loadMoreDrinks="loadMoreDrinks"
+        />
+      </main-cocktail-card-result>
+    </div>
   </div>
 </template>
 
@@ -24,13 +27,15 @@ import MainCocktailCardResult from '@/components/MainCocktailCardResult';
 import axios from 'axios';
 import IngredientList from '@/components/IngredientList';
 import MainPages from '@/components/MainPages';
+import MainFilter from '@/components/MainFilter';
 export default {
   name: 'CocktailsView',
-  components: { MainPages, IngredientList, MainCocktailCardResult, AppNavbar },
+  components: { MainFilter, MainPages, IngredientList, MainCocktailCardResult, AppNavbar },
   data() {
     return {
       drinks: [],
       ingredients: [],
+      filters: [],
       isLoading: false,
       page: 1,
       limit: Number,
@@ -48,6 +53,7 @@ export default {
           params: {
             _page: this.page,
             _limit: this.limit,
+            strTags_like: this.filters,
           },
         });
         this.totalPages = Math.ceil(response.headers['x-total-count'] / this.limit);
@@ -100,6 +106,9 @@ export default {
     removeIngredient(ingredient) {
       this.ingredients = this.ingredients.filter(i => i.id !== ingredient.id);
     },
+    changeFilters(filters) {
+      this.filters = filters;
+    },
     updateWidth() {
       this.windowWidth = window.innerWidth;
       this.calculateLimit();
@@ -126,6 +135,9 @@ export default {
   },
   watch: {
     ingredients() {
+      this.fetchDrinks();
+    },
+    filters() {
       this.fetchDrinks();
     },
     limit() {
