@@ -1,23 +1,13 @@
 # cocktails
 
-## Project setup
+## Для запуска сайта
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+npm run start
 ```
 
-### Compiles and minifies for production
+### Для запуска тестов
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+npm run cypress
 ```
 
 ### Customize configuration
