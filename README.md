@@ -1,5 +1,7 @@
 # cocktails
 
+Для поиска коктейлей - в строке поиска введите ингредиенты, с которыми вы хотите увидеть коктейли.
+
 ## Для запуска сайта
 ```
 npm run start
@@ -9,6 +11,3 @@ npm run start
 ```
 npm run cypress
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
