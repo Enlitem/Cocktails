@@ -5,7 +5,11 @@
     <div class="mb-[30px]">История</div>
     <ingredient-list class="mb-4 lg:pb-4 lg:mb-10" :ingredients="this.ingredients" @remove="removeIngredient" />
     <div class="lg:grid lg:grid-cols-4 lg:gap-x-[20px] xl:grid-cols-12">
-      <main-filter class="mb-[30px] lg:col-span-1 xl:col-span-3 xl:max-w-[251px]" @check="changeFilters" />
+      <main-filter
+        class="mb-[30px] lg:col-span-1 xl:col-span-3 xl:max-w-[251px]"
+        @check="changeFilters"
+        :window-width="this.windowWidth"
+      />
       <main-cocktail-card-result class="mb-[50px] lg:col-span-3 xl:col-span-9" v-if="!isLoading" :drinks="drinks">
         <main-pages
           class="smx:col-start-1 smx:col-span-full md:col-start-2 md:col-span-1"

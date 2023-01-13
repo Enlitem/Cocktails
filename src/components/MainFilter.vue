@@ -7,71 +7,18 @@
         <span v-if="this.filterVisible">Скрыть фильтр</span>
       </div>
     </div>
-    <ul v-if="filterVisible" class="filter-checkboxes mt-[14px] lg:mt-0">
-      <li class="filter-options">
-        <div class="option-name">Градус</div>
-        <div class="checkbox-box">
+    <ul class="filter-checkboxes mt-[14px] lg:mt-0" v-if="filterVisible">
+      <li class="filter-options" v-for="filter in filters" :key="filter.title">
+        <div class="option-name">{{ filter.title }}</div>
+        <div class="checkbox-box" v-for="checkbox in filter.checkboxes" :key="checkbox.name">
           <input
             class="checkbox"
             type="checkbox"
-            value="Крепкие"
-            v-model="filters"
-            @change="$emit('check', this.filters)"
+            :value="checkbox.value"
+            v-model="checkedFilters"
+            @change="$emit('check', this.checkedFilters)"
           />
-          <label>Крепкое</label>
-        </div>
-        <div class="checkbox-box">
-          <input
-            class="checkbox"
-            type="checkbox"
-            value="Слабоалкогольное"
-            v-model="filters"
-            @change="$emit('check', this.filters)"
-          />
-          <label>Слабоалкогольное</label>
-        </div>
-        <div class="checkbox-box">
-          <input
-            class="checkbox"
-            type="checkbox"
-            value="Безалкогольное"
-            v-model="filters"
-            @change="$emit('check', this.filters)"
-          />
-          <label>Безалкогольное</label>
-        </div>
-      </li>
-      <li class="filter-options">
-        <div class="option-name">Вкус</div>
-        <div class="checkbox-box">
-          <input
-            class="checkbox"
-            type="checkbox"
-            value="Сладкое"
-            v-model="filters"
-            @change="$emit('check', this.filters)"
-          />
-          <label>Сладкое</label>
-        </div>
-        <div class="checkbox-box">
-          <input
-            class="checkbox"
-            type="checkbox"
-            value="Сливочное"
-            v-model="filters"
-            @change="$emit('check', this.filters)"
-          />
-          <label>Сливочное</label>
-        </div>
-        <div class="checkbox-box">
-          <input
-            class="checkbox"
-            type="checkbox"
-            value="Кофейное"
-            v-model="filters"
-            @change="$emit('check', this.filters)"
-          />
-          <label>Кофейное</label>
+          <label>{{ checkbox.name }}</label>
         </div>
       </li>
     </ul>
@@ -83,15 +30,52 @@ export default {
   name: 'MainFilter',
   data() {
     return {
-      filterVisible: window.screen.width > 768,
-      filters: [],
+      filterVisible: window.innerWidth > 1000,
+      filters: [
+        {
+          title: 'Градус',
+          checkboxes: [
+            { name: 'Крепкое', value: 'Крепкие' },
+            { name: 'Слабоалкогольное', value: 'Слабоалкогольные' },
+          ],
+        },
+        {
+          title: 'Вкус',
+          checkboxes: [
+            { name: 'Сладкий', value: 'Сладкие' },
+            { name: 'Сливочный', value: 'Сливочные' },
+            { name: 'Кофейный', value: 'Кофейные' },
+            { name: 'Кислый', value: 'Кислые' },
+          ],
+        },
+        {
+          title: 'Тип',
+          checkboxes: [
+            { name: 'Лонги', value: 'Лонги' },
+            { name: 'Шорт дринки', value: 'Шорт дринки' },
+            { name: 'Шоты', value: 'Шоты' },
+          ],
+        },
+      ],
+      checkedFilters: [],
     };
+  },
+  props: {
+    windowWidth: {
+      type: Number,
+      required: true,
+    },
   },
   methods: {
     showFilter() {
       this.filterVisible = !this.filterVisible;
     },
     check() {},
+  },
+  watch: {
+    windowWidth() {
+      this.filterVisible = window.innerWidth > 1000;
+    },
   },
 };
 </script>
