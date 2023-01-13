@@ -17,7 +17,7 @@
             <img class="lg:w-[29px]" src="@/assets/favourites.svg" alt="Like" />
           </div>
           <div class="mb-[20px] text-[16px] text-grey">{{ this.secondName }}</div>
-          <main-cocktail-card-label-list class="mb-[35px] md:mb-0" :labels="this.ingredients" />
+          <main-cocktail-card-label-list class="mb-[35px] md:mb-0" :labels="this.tags" />
         </div>
         <img
           class="rounded-[20px] mb-[20px] smx:max-w-[440px] smx:ml-auto smx:mr-auto md:hidden"
@@ -107,6 +107,13 @@ export default {
     preparation: {
       type: Array,
       required: true,
+      default() {
+        return [];
+      },
+    },
+    tags: {
+      type: Array,
+      required: false,
       default() {
         return [];
       },
