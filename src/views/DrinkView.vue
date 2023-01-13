@@ -11,6 +11,7 @@
       :instruction="this.drink.strInstructions"
       :glass="this.drink.strGlass"
       :preparation="this.drink.preparation"
+      :tags="this.drink.strTags"
     />
   </div>
 </template>
