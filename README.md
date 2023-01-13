@@ -1,24 +1,13 @@
 # cocktails
 
-## Project setup
+Для поиска коктейлей - в строке поиска введите ингредиенты, с которыми вы хотите увидеть коктейли.
+
+## Для запуска сайта
 ```
-npm install
+npm run start
 ```
 
-### Compiles and hot-reloads for development
+### Для запуска тестов
 ```
-npm run serve
+npm run cypress
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
