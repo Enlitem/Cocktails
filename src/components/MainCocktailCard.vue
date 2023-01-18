@@ -1,6 +1,8 @@
 <template>
   <div class="max-w-[320px] smx:w-full md:w-[225px] xl:w-[289px]">
-    <img class="rounded-[12px] mb-3 md:mb-[5px]" :src="img" alt="" @click="$router.push(`/cocktails/${secondName}`)" />
+    <router-link :to="{ name: 'drink', params: { drinkName: secondName } }" append>
+      <img class="rounded-[12px] mb-3 md:mb-[5px]" :src="img" alt=""
+    /></router-link>
     <div class="flex justify-between">
       <span class="text-[18px] font-normal leading-[130%] md:text-[16px] xl:text-[18px]">{{ name }}</span>
       <button>

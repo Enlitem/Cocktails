@@ -140,7 +140,7 @@ export default {
     },
     search() {
       router.push({
-        name: 'cocktails',
+        name: 'allCocktails',
         query: { ingredients: this.ingredients.map(item => item.ingredient).join(',') },
       });
     },

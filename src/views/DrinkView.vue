@@ -1,6 +1,5 @@
 <template>
-  <div class="spacing">
-    <app-navbar class="mb-[15px]" />
+  <div>
     <div class="mb-[35px]">История</div>
     <main-recipe
       :name="this.drink.strDrink"
@@ -17,13 +16,12 @@
 </template>
 
 <script>
-import AppNavbar from '@/components/AppNavbar';
 import axios from 'axios';
 import MainRecipe from '@/components/MainRecipe';
 
 export default {
   name: 'DrinkView',
-  components: { MainRecipe, AppNavbar },
+  components: { MainRecipe },
   data() {
     return {
       isLoading: false,
@@ -47,7 +45,7 @@ export default {
       }
     },
   },
-  mounted() {
+  created() {
     this.fetchDrink();
   },
 };

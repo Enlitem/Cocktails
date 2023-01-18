@@ -1,19 +1,19 @@
 <template>
   <nav class="flex items-center justify-between pt-[11px] pb-[10px] mb-[60px] lg:pt-[19px] lg:pb-[16px]">
-    <div class="logo">LOGO</div>
+    <router-link to="/" exact>
+      <div class="logo">LOGO</div>
+    </router-link>
     <div class="flex justify-between items-center">
       <div class="hidden lg:block lg:mr-[144px]">
         <ul class="flex">
           <li class="nav-item">
-            <router-link :class="[currentRouteName === 'main' ? 'link-active' : '']" to="/">Главная</router-link>
+            <router-link to="/" exact>Главная</router-link>
           </li>
           <li class="nav-item">
-            <router-link :class="[currentRouteName === 'cocktails' ? 'link-active' : '']" to="cocktails"
-              >Коктейли</router-link
-            >
+            <router-link to="/cocktails">Коктейли</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="">Калькулятор вечеринок</router-link>
+            <router-link to="/party">Калькулятор вечеринок</router-link>
           </li>
         </ul>
       </div>
@@ -26,11 +26,6 @@
 <script>
 export default {
   name: 'AppNavbar',
-  computed: {
-    currentRouteName() {
-      return this.$route.name;
-    },
-  },
 };
 </script>
 
@@ -44,9 +39,6 @@ nav {
   font-size: 24px;
   line-height: 29px;
   color: #443e3e;
-}
-.link-active {
-  @apply text-pink;
 }
 
 .nav-item {

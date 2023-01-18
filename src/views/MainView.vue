@@ -1,6 +1,5 @@
 <template>
-  <div class="spacing">
-    <app-navbar />
+  <div>
     <h1
       class="mb-[6px] font-raleway text-[24px] font-[500] leading-[29px] md:text-[36px] md:leading-[42px] md:tracking-[0.03em] lg:text-[50px] lg:tracking-[0.05em]"
     >
@@ -21,7 +20,7 @@ import MainSearch from '@/components/MainSearch';
 import AppNavbar from '@/components/AppNavbar';
 export default {
   name: 'MainView',
-  components: { AppNavbar, MainSearch },
+  components: { MainSearch },
   data() {
     return {};
   },

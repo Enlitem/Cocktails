@@ -1,3 +1,4 @@
+import AllCocktails from '@/views/AllCocktailsView';
 import Cocktails from '@/views/CocktailsView';
 import Drink from '@/views/DrinkView';
 import Main from '@/views/MainView';
@@ -10,14 +11,22 @@ const routes = [
     component: Main,
   },
   {
-    path: '/cocktails/',
+    path: '/cocktails',
     name: 'cocktails',
     component: Cocktails,
-  },
-  {
-    path: '/cocktails/:drinkName',
-    name: 'drink',
-    component: Drink,
+    children: [
+      {
+        path: '',
+        name: 'allCocktails',
+        component: AllCocktails,
+      },
+      {
+        path: ':drinkName',
+        name: 'drink',
+        component: Drink,
+        props: true,
+      },
+    ],
   },
 ];
 

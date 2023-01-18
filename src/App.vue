@@ -1,11 +1,15 @@
 <template>
-  <div class="app">
-    <router-view></router-view>
+  <div class="app spacing">
+    <app-navbar />
+    <router-view> </router-view>
   </div>
 </template>
 
 <script>
-export default {};
+import AppNavbar from '@/components/AppNavbar';
+export default {
+  components: { AppNavbar },
+};
 </script>
 
 <style>
@@ -14,5 +18,8 @@ export default {};
 }
 .spacing {
   @apply px-5 mr-auto ml-auto max-w-[1216px];
+}
+.router-link-active {
+  @apply text-pink;
 }
 </style>
