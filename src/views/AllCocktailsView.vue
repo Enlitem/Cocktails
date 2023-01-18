@@ -2,7 +2,12 @@
   <div>
     <div class="font-medium text-[18px] mb-2 smx:text-[24px]">Найдено {{ this.totalDrinks }} коктейлей</div>
     <div class="mb-[30px]">История</div>
-    <ingredient-list class="mb-4 lg:pb-4 lg:mb-10" :ingredients="this.ingredients" @remove="removeIngredient" />
+    <ingredient-list
+      class="mb-4 lg:pb-4 lg:mb-10"
+      :ingredients="this.ingredients"
+      @remove="removeIngredient"
+      :underline="true"
+    />
     <div class="lg:grid lg:grid-cols-4 lg:gap-x-[20px] xl:grid-cols-12">
       <main-filter
         class="mb-[30px] lg:col-span-1 xl:col-span-3 xl:max-w-[251px]"

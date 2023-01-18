@@ -1,6 +1,7 @@
 <template>
   <div
-    class="flex flex-wrap gap-x-2.5 gap-y-2 md:gap-x-[15px] lg:border-b lg:border-[#CCCCCC]"
+    class="flex flex-wrap gap-x-2.5 gap-y-2 md:gap-x-[15px]"
+    :class="{ bordered: underline }"
     v-if="ingredients.length > 0"
   >
     <ingredient-label
@@ -22,8 +23,19 @@ export default {
       type: Array,
       required: true,
     },
+    underline: {
+      type: Boolean,
+      require: false,
+      default() {
+        return false;
+      },
+    },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.bordered {
+  @apply lg:border-b lg:border-[#CCCCCC];
+}
+</style>
