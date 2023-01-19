@@ -13,6 +13,7 @@
         class="mb-[30px] lg:col-span-1 xl:col-span-3 xl:max-w-[251px]"
         @check="changeFilters"
         :window-width="this.windowWidth"
+        :checked-filters="this.filters"
       />
       <main-cocktail-card-result class="mb-[50px] lg:col-span-3 xl:col-span-9" v-if="!isLoading" :drinks="drinks">
         <main-pages
@@ -35,6 +36,7 @@ import axios from 'axios';
 import IngredientList from '@/components/IngredientList';
 import MainPages from '@/components/MainPages';
 import MainFilter from '@/components/MainFilter';
+import router from '@/router';
 export default {
   name: 'AllCocktailsView',
   components: { MainFilter, MainPages, IngredientList, MainCocktailCardResult },
@@ -80,6 +82,7 @@ export default {
           params: {
             _page: this.page,
             _limit: this.limit,
+            strTags_like: this.filters,
           },
         });
         this.drinks = [...this.drinks, ...response.data];
@@ -100,6 +103,11 @@ export default {
         arr.forEach(item => this.ingredients.push({ ingredient: item, id: Math.random().toString(16).slice(2) }));
       }
     },
+    getFiltersFromQuery() {
+      if (this.$route.query.filters) {
+        this.filters = this.$route.query.filters.split(',');
+      }
+    },
     changePage(pageNumber) {
       this.page = pageNumber;
       this.fetchDrinks();
@@ -114,9 +122,35 @@ export default {
     },
     removeIngredient(ingredient) {
       this.ingredients = this.ingredients.filter(i => i.id !== ingredient.id);
+      router.push({
+        path: '/cocktails',
+        query: {
+          ingredients: this.ingredients.map(item => item.ingredient).join(','),
+          filers: this.$route.query.filters,
+        },
+      });
     },
-    changeFilters(filters) {
-      this.filters = filters;
+    changeFilters(filter) {
+      if (!this.filters.includes(filter)) {
+        this.filters.push(filter);
+        this.$router.push({
+          path: '/cocktails',
+          query: {
+            ingredients: this.$route.query.ingredients,
+            filters: this.filters.join(','),
+          },
+        });
+      } else {
+        this.filters = this.filters.filter(i => i !== filter);
+        this.$router.push({
+          path: '/cocktails',
+          query: {
+            ingredients: this.$route.query.ingredients,
+            filters: (this.filters = this.filters.filter(i => i !== filter)),
+          },
+        });
+      }
+      this.fetchDrinks();
     },
     updateWidth() {
       this.windowWidth = window.innerWidth;
@@ -137,6 +171,7 @@ export default {
   mounted() {
     this.calculateLimit();
     this.getIngredientsFromQuery();
+    this.getFiltersFromQuery();
     this.fetchDrinks();
   },
   created() {

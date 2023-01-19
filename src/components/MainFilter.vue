@@ -15,8 +15,8 @@
             class="checkbox"
             type="checkbox"
             :value="checkbox.value"
-            v-model="checkedFilters"
-            @change="$emit('check', this.checkedFilters)"
+            @change="$emit('check', checkbox.value)"
+            :checked="this.checkedFilters.includes(checkbox.value)"
           />
           <label>{{ checkbox.name }}</label>
         </div>
@@ -57,7 +57,6 @@ export default {
           ],
         },
       ],
-      checkedFilters: [],
     };
   },
   props: {
@@ -65,12 +64,18 @@ export default {
       type: Number,
       required: true,
     },
+    checkedFilters: {
+      type: Array,
+      required: true,
+      default() {
+        return [];
+      },
+    },
   },
   methods: {
     showFilter() {
       this.filterVisible = !this.filterVisible;
     },
-    check() {},
   },
   watch: {
     windowWidth() {
