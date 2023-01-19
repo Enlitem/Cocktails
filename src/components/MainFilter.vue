@@ -30,7 +30,7 @@ export default {
   name: 'MainFilter',
   data() {
     return {
-      filterVisible: window.innerWidth > 1000,
+      filterVisible: window.innerWidth >= 1000,
       filters: [
         {
           title: 'Градус',
