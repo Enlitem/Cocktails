@@ -29,9 +29,14 @@ describe('Find Aviation cocktail', () => {
     cy.wait('@getCocktails');
 
     cy.get('div.font-medium').should('have.text', 'Найдено 25 коктейлей');
-    cy.get('div.result-container div:nth-child(1) div.flex').should('have.text', 'Авиация');
-    cy.get('div.result-container div:nth-child(1) > img').should('exist').click();
-
+    cy.get('input.checkbox').check('Крепкие');
+    cy.get('div.font-medium').should('have.text', 'Найдено 14 коктейлей');
+    cy.get('div.result-container div:nth-child(1) div.justify-between').should('have.text', 'Авиация');
+    cy.get('div.result-container div:nth-child(1) > a').should('exist').click();
     cy.get('div.justify-between div.font-normal').should('have.text', 'Авиация');
+
+    cy.go('back');
+    cy.get('div.font-medium').should('have.text', 'Найдено 14 коктейлей');
+    cy.get('input[value="Крепкие"]').should('be.checked');
   });
 });
