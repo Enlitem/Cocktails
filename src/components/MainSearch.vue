@@ -161,7 +161,7 @@ export default {
 
 <style scoped>
 .text-field__input {
-  @apply bg-[url('@/assets/search-icon_sm.svg')] bg-left-10 bg-no-repeat w-full h-full relative text-[12px] pl-[32px] md:bg-[url('@/assets/search-icon_md.svg')] md:bg-left-43 md:pl-[85px] md:text-[16px];
+  @apply bg-[url('@/assets/search-icon_sm.svg')] bg-left-10 bg-no-repeat w-full h-full relative text-[12px] pl-[32px] md:bg-[url('@/assets/search-icon_md.svg')] md:bg-left-43 md:pl-[85px] md:text-[16px] z-[-1];
   font-weight: 400;
   line-height: 130%;
   border-width: 1px 0 1px 1px;
