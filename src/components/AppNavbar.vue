@@ -21,13 +21,13 @@
       <div class="lg:hidden">
         <main-burger-menu>
           <ul>
-            <li class="nav-item">
+            <li class="nav-item burger-item">
               <router-link to="/" exact>Главная</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item burger-item">
               <router-link to="/cocktails">Коктейли</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item burger-item">
               <router-link to="/party">Калькулятор вечеринок</router-link>
             </li>
           </ul>
@@ -59,5 +59,9 @@ nav {
 
 .nav-item {
   @apply mr-11 last:mr-0 text-[14px] font-normal leading-[129%] text-grey;
+}
+
+.burger-item {
+  @apply mb-[20px];
 }
 </style>
