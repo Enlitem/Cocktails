@@ -33,10 +33,12 @@ export default {
   top: 50px;
   left: 0;
   cursor: pointer;
+  z-index: 999;
 }
 .sidebar-panel {
   overflow-y: auto;
   background-color: #ffffff;
+  border-top: 1px solid #cccccc;
   position: fixed;
   right: 0;
   top: 50px;
