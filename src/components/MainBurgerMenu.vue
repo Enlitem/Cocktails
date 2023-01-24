@@ -11,6 +11,7 @@
 
 <script>
 import MainSideBar from '@/components/MainSideBar';
+import router from '@/router';
 export default {
   name: 'MainBurgerMenu',
   components: { MainSideBar },
@@ -27,14 +28,22 @@ export default {
       this.isBurgerActive = false;
     },
   },
+  watch: {
+    isBurgerActive: function () {
+      if (this.isBurgerActive) {
+        document.documentElement.style.overflow = 'hidden';
+      } else {
+        document.documentElement.style.overflow = 'auto';
+      }
+    },
+    $route(to, from) {
+      this.closePanel();
+    },
+  },
 };
 </script>
 
 <style scoped>
-.hidden {
-  visibility: hidden;
-}
-
 button {
   cursor: pointer;
 }
