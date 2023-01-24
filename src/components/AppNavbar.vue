@@ -17,15 +17,31 @@
           </li>
         </ul>
       </div>
-      <img class="mr-[9px]" src="@/assets/favourites.svg" alt="Favourites" />
-      <img class="w-[18px] h-[13px] lg:hidden" src="@/assets/burger.svg" alt="Favourites" />
+      <img class="mr-[3px]" src="@/assets/favourites.svg" alt="Favourites" />
+      <div class="lg:hidden">
+        <main-burger-menu>
+          <ul>
+            <li class="nav-item burger-item">
+              <router-link to="/" exact>Главная</router-link>
+            </li>
+            <li class="nav-item burger-item">
+              <router-link to="/cocktails">Коктейли</router-link>
+            </li>
+            <li class="nav-item burger-item">
+              <router-link to="/party">Калькулятор вечеринок</router-link>
+            </li>
+          </ul>
+        </main-burger-menu>
+      </div>
     </div>
   </nav>
 </template>
 
 <script>
+import MainBurgerMenu from '@/components/MainBurgerMenu';
 export default {
   name: 'AppNavbar',
+  components: { MainBurgerMenu },
 };
 </script>
 
@@ -43,5 +59,9 @@ nav {
 
 .nav-item {
   @apply mr-11 last:mr-0 text-[14px] font-normal leading-[129%] text-grey;
+}
+
+.burger-item {
+  @apply mb-[20px];
 }
 </style>
