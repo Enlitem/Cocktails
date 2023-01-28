@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mb-[35px]">История</div>
+    <div class="mb-[35px] pt-[65px] md:pt-[70px] lg:pt-[85px]">История</div>
     <main-recipe
       :name="this.drink.strDrink"
       :second-name="this.drink.strDrinkAlternate"

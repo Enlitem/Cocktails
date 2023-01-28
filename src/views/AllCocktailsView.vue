@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pt-[80px] lg:pt-[105px]">
     <div class="font-medium text-[18px] mb-2 smx:text-[24px]">Найдено {{ this.totalDrinks }} коктейлей</div>
     <div class="mb-[30px]">История</div>
     <ingredient-list
