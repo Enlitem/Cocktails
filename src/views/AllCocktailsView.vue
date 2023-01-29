@@ -15,6 +15,9 @@
         :window-width="this.windowWidth"
         :checked-filters="this.filters"
       />
+      <div v-if="isLoading" class="flex justify-between lg:col-span-full">
+        <main-loader class="m-auto"></main-loader>
+      </div>
       <main-cocktail-card-result class="mb-[50px] lg:col-span-3 xl:col-span-9" v-if="!isLoading" :drinks="drinks">
         <main-pages
           class="col-span-full"
@@ -37,9 +40,10 @@ import IngredientList from '@/components/IngredientList';
 import MainPages from '@/components/MainPages';
 import MainFilter from '@/components/MainFilter';
 import router from '@/router';
+import MainLoader from '@/components/MainLoader';
 export default {
   name: 'AllCocktailsView',
-  components: { MainFilter, MainPages, IngredientList, MainCocktailCardResult },
+  components: { MainLoader, MainFilter, MainPages, IngredientList, MainCocktailCardResult },
   data() {
     return {
       drinks: [],
