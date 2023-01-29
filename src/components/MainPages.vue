@@ -2,10 +2,10 @@
   <div class="flex flex-col items-center">
     <button class="btn" @click="$emit('loadMoreDrinks')">Смотреть еще</button>
     <div class="flex gap-x-5 justify-items-center">
-      <img src="@/assets/arrow.svg" alt="Previous page" @click="$emit('previousPage')" />
+      <img class="arrow" src="@/assets/arrow.svg" alt="Previous page" @click="$emit('previousPage')" />
       <div v-if="totalPages <= 7" class="flex gap-x-[18px]">
         <div
-          class="h-[20px] flex justify-center items-center font-normal text-[12px] leading-[130%]"
+          class="page"
           :class="{ 'current-page': page === pageNumber }"
           v-for="pageNumber in totalPages"
           :key="pageNumber"
@@ -15,16 +15,10 @@
         </div>
       </div>
       <div v-if="totalPages > 7" class="flex gap-x-[18px]">
-        <div
-          class="h-[20px] flex justify-center items-center font-normal text-[12px] leading-[130%]"
-          :class="{ 'current-page': page === 1 }"
-          @click="$emit('changePage', 1)"
-        >
-          1
-        </div>
+        <div class="page" :class="{ 'current-page': page === 1 }" @click="$emit('changePage', 1)">1</div>
         <div v-if="page < 5" class="flex gap-x-5">
           <div
-            class="h-[20px] flex justify-center items-center font-normal text-[12px] leading-[130%]"
+            class="page"
             :class="{ 'current-page': page === pageNumber + 1 }"
             v-for="pageNumber in 4"
             :key="pageNumber"
@@ -36,26 +30,20 @@
         </div>
         <div v-if="page >= 5 && page <= totalPages - 4" class="flex gap-x-5">
           <div>...</div>
-          <div
-            class="h-[20px] flex justify-center items-center font-normal text-[12px] leading-[130%]"
-            @click="$emit('changePage', page - 1)"
-          >
+          <div class="page" @click="$emit('changePage', page - 1)">
             {{ page - 1 }}
           </div>
-          <div class="current-page h-[20px] flex justify-center items-center font-normal text-[12px] leading-[130%]">
+          <div class="current-page page">
             {{ page }}
           </div>
-          <div
-            class="h-[20px] flex justify-center items-center font-normal text-[12px] leading-[130%]"
-            @click="$emit('changePage', page + 1)"
-          >
+          <div class="page" @click="$emit('changePage', page + 1)">
             {{ page + 1 }}
           </div>
           <div>...</div>
         </div>
         <div v-if="page > totalPages - 4" class="flex flex-row-reverse gap-x-5">
           <div
-            class="h-[20px] flex justify-center items-center font-normal text-[12px] leading-[130%]"
+            class="page"
             :class="{ 'current-page': page === totalPages - pageNumber }"
             v-for="pageNumber in 4"
             :key="pageNumber"
@@ -65,15 +53,11 @@
           </div>
           <div>...</div>
         </div>
-        <div
-          class="h-[20px] flex justify-center items-center font-normal text-[12px] leading-[130%]"
-          :class="{ 'current-page': page === totalPages }"
-          @click="$emit('changePage', totalPages)"
-        >
+        <div class="page" :class="{ 'current-page': page === totalPages }" @click="$emit('changePage', totalPages)">
           {{ totalPages }}
         </div>
       </div>
-      <img class="right-arrow" src="@/assets/arrow.svg" alt="Next page" @click="$emit('nextPage')" />
+      <img class="arrow right-arrow" src="@/assets/arrow.svg" alt="Next page" @click="$emit('nextPage')" />
     </div>
   </div>
 </template>
@@ -103,9 +87,21 @@ export default {
   color: #eb2d47;
   margin-bottom: 20px;
 }
+.btn:hover {
+  background-color: #eb2d47;
+  color: #ffffff;
+}
+
+.btn:active {
+  background-color: #c92037;
+}
 
 .right-arrow {
   transform: scale(-1, 1);
+}
+
+.page {
+  @apply h-[20px] flex justify-center items-center font-normal text-[12px] cursor-pointer;
 }
 
 .current-page {
@@ -114,5 +110,9 @@ export default {
   color: white;
   background: #eb2d47;
   border-radius: 3px;
+}
+
+.arrow {
+  cursor: pointer;
 }
 </style>
