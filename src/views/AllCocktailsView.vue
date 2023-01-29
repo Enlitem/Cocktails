@@ -17,7 +17,7 @@
       />
       <main-cocktail-card-result class="mb-[50px] lg:col-span-3 xl:col-span-9" v-if="!isLoading" :drinks="drinks">
         <main-pages
-          class="smx:col-start-1 smx:col-span-full md:col-start-2 md:col-span-1"
+          class="col-span-full"
           :page="this.page"
           :totalPages="this.totalPages"
           @changePage="changePage"
@@ -113,12 +113,16 @@ export default {
       this.fetchDrinks();
     },
     nextPage() {
-      this.page += 1;
-      this.fetchDrinks();
+      if (this.page !== this.totalPages) {
+        this.page += 1;
+        this.fetchDrinks();
+      }
     },
     previousPage() {
-      this.page -= 1;
-      this.fetchDrinks();
+      if (this.page !== 1) {
+        this.page -= 1;
+        this.fetchDrinks();
+      }
     },
     removeIngredient(ingredient) {
       this.ingredients = this.ingredients.filter(i => i.id !== ingredient.id);
