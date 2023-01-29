@@ -113,12 +113,16 @@ export default {
       this.fetchDrinks();
     },
     nextPage() {
-      this.page += 1;
-      this.fetchDrinks();
+      if (this.page !== this.totalPages) {
+        this.page += 1;
+        this.fetchDrinks();
+      }
     },
     previousPage() {
-      this.page -= 1;
-      this.fetchDrinks();
+      if (this.page !== 1) {
+        this.page -= 1;
+        this.fetchDrinks();
+      }
     },
     removeIngredient(ingredient) {
       this.ingredients = this.ingredients.filter(i => i.id !== ingredient.id);

@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center">
-    <button class="btn" @click="$emit('loadMoreDrinks')">Смотреть еще</button>
+    <button v-if="page !== totalPages" class="btn" @click="$emit('loadMoreDrinks')">Смотреть еще</button>
     <div class="flex gap-x-5 justify-items-center">
       <img class="arrow" src="@/assets/arrow.svg" alt="Previous page" @click="$emit('previousPage')" />
       <div v-if="totalPages <= 7" class="flex gap-x-[18px]">
