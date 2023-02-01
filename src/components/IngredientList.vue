@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="flex flex-wrap gap-x-2.5 gap-y-2 md:gap-x-[15px]"
-    :class="{ bordered: underline }"
-    v-if="ingredients.length > 0"
-  >
+  <div class="flex flex-wrap gap-x-2.5 gap-y-2 md:gap-x-[15px]" :class="{ bordered: underline }">
     <ingredient-label
       v-for="ingredient in ingredients"
       :key="ingredient.id"
@@ -25,7 +21,6 @@ export default {
     },
     underline: {
       type: Boolean,
-      require: false,
       default() {
         return false;
       },
