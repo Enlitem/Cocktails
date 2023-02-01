@@ -20,15 +20,12 @@ import MainSearch from '@/components/MainSearch';
 export default {
   name: 'MainView',
   components: { MainSearch },
-  data() {
-    return {};
-  },
 };
 </script>
 
 <style scoped>
 .main-img {
-  @apply min-h-[250px] max-h-[320px] w-[100%] lg:min-h-[320px] xl:max-h-[410px];
+  @apply min-h-[250px] max-h-[320px] w-[100%] mt-[30px] lg:min-h-[320px] xl:max-h-[410px];
   object-fit: cover;
   object-position: center;
   border-radius: 30px;

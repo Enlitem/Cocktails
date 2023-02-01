@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="mb-[35px] pt-[65px] md:pt-[70px] lg:pt-[85px]">История</div>
-    <div class="fixed top-0 left-0 flex w-full h-full">
-      <main-loader class="m-auto" v-if="isLoading"></main-loader>
+    <div v-if="isLoading" class="fixed top-0 left-0 flex w-full h-full">
+      <main-loader class="m-auto"></main-loader>
     </div>
     <main-recipe
       v-if="!isLoading"
