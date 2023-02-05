@@ -1,6 +1,7 @@
 import AllCocktails from '@/views/AllCocktailsView';
 import Cocktails from '@/views/CocktailsView';
 import Drink from '@/views/DrinkView';
+import Likes from '@/views/LikesView';
 import Main from '@/views/MainView';
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -27,6 +28,11 @@ const routes = [
         props: true,
       },
     ],
+  },
+  {
+    path: '/likes',
+    name: 'likes',
+    component: Likes,
   },
 ];
 

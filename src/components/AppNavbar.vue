@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="fixed z-50 left-0 right-0 px-5 w-[100vw] max-w-[1216px] m-auto pt-[11px] lg:pt-[19px]"
+    class="fixed z-50 left-0 right-0 px-5 w-[100vw] max-w-[1256px] m-auto pt-[11px] lg:pt-[19px]"
     :class="{ 'navbar-hidden': !showNavbar }"
   >
     <div class="bordered flex items-center justify-between pb-[10px] lg:pb-[16px]">
@@ -21,7 +21,10 @@
             </li>
           </ul>
         </div>
-        <img class="mr-[3px]" src="@/assets/favourites.svg" alt="Favourites" />
+        <router-link to="/likes" active-class="router-link-active">
+          <img v-if="$route.path === '/likes'" class="mr-[3px]" src="@/assets/favouritesEnabled.svg" alt="Favourites" />
+          <img v-else class="mr-[3px]" src="@/assets/favourites.svg" alt="Favourites" />
+        </router-link>
         <div class="lg:hidden">
           <main-burger-menu>
             <ul>
