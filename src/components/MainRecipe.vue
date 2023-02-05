@@ -14,7 +14,12 @@
             <div class="font-normal text-[24px] font-medium lg:text-[36px]">
               {{ this.name }}
             </div>
-            <img class="lg:w-[29px]" src="@/assets/favourites.svg" alt="Like" />
+            <button v-if="!likedCocktails.includes(this.id)" @click="this.addLike(this.id)">
+              <img class="lg:w-[29px]" src="@/assets/favourites.svg" alt="Like" />
+            </button>
+            <button v-else @click="this.removeLike(this.id)">
+              <img class="lg:w-[29px]" src="@/assets/favouritesEnabled.svg" alt="Like" />
+            </button>
           </div>
           <div class="mb-[20px] text-[16px] text-grey">{{ this.secondName }}</div>
           <main-cocktail-card-label-list class="mb-[35px] md:mb-0" :labels="this.tags" />
@@ -65,9 +70,13 @@
 
 <script>
 import MainCocktailCardLabelList from '@/components/MainCocktailCardLabelList';
+import { mapState, mapMutations } from 'vuex';
 export default {
   name: 'MainRecipe',
   components: { MainCocktailCardLabelList },
+  methods: {
+    ...mapMutations({ addLike: 'likes/addLike', removeLike: 'likes/removeLike' }),
+  },
   props: {
     name: {
       type: String,
@@ -118,8 +127,12 @@ export default {
         return [];
       },
     },
+    id: {
+      required: true,
+    },
   },
   computed: {
+    ...mapState({ likedCocktails: state => state.likes.likedCocktails }),
     instructionToArray() {
       return this.instruction.split('. ');
     },

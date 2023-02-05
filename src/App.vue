@@ -17,7 +17,7 @@ export default {
   @apply font-sans leading-[130%];
 }
 .spacing {
-  @apply px-5 mr-auto ml-auto max-w-[1216px];
+  @apply px-5 mr-auto ml-auto max-w-[1256px];
 }
 .router-link-active {
   @apply text-pink;
