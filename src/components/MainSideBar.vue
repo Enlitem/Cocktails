@@ -50,16 +50,9 @@ export default {
   width: 230px;
 }
 
-.slide-enter-active,
-.slide-leave-active {
-  /*transition: transform 0.3s;*/
-  /*transform: translateX(-70%);*/
-}
-
 .slide-enter,
 .slide-leave-to {
   transform: translateX(100%);
-  /*transition: all 0.3s ease-in;*/
 }
 
 .slide-enter-active {

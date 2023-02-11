@@ -16,9 +16,6 @@
             <li class="nav-item">
               <router-link to="/cocktails">Коктейли</router-link>
             </li>
-            <li class="nav-item">
-              <router-link to="/party">Калькулятор вечеринок</router-link>
-            </li>
           </ul>
         </div>
         <router-link to="/likes" active-class="router-link-active">
@@ -33,9 +30,6 @@
               </li>
               <li class="nav-item burger-item">
                 <router-link to="/cocktails">Коктейли</router-link>
-              </li>
-              <li class="nav-item burger-item">
-                <router-link to="/party">Калькулятор вечеринок</router-link>
               </li>
             </ul>
           </main-burger-menu>
